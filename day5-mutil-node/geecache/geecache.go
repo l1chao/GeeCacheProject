@@ -29,7 +29,7 @@ func (f GetterFunc) Get(key string) ([]byte, error) {
 
 var (
 	mu     sync.RWMutex
-	groups = make(map[string]*Group)
+	groups = make(map[string]*Group) //所有的group都记录在这里
 )
 
 // NewGroup create a new instance of Group
