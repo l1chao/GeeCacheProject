@@ -31,8 +31,7 @@ func New(replicas int, fn Hash) *Map {
 }
 
 // Add adds some keys to the hash.
-// 先将节点的hash加到环上去，然后再将环上所有hash都映射到原key。多个hash可以映射同一个原key，因为可能有虚拟节点。
-func (m *Map) Add(keys ...string) { // 被加入进去的，都是节点（物理+虚拟）。加进去的是hash不是原key。
+func (m *Map) Add(keys ...string) { // 被加入进去的，都是节点（物理+虚拟）。加进去的是hash不是原key。  // key == "http://localhost:8001"
 	for _, key := range keys {
 		for i := 0; i < m.replicas; i++ {
 			hash := int(m.hash([]byte(strconv.Itoa(i) + key)))
