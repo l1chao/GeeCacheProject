@@ -12,7 +12,7 @@ var db = map[string]string{ //8001 8002 8003的slow DB都是一样的，可以�
 	"Tom":  "630",
 	"Jack": "589",
 	"Sam":  "567",
-}
+} 
 
 // 一个Cache Server就是一个Group。每一个cache server都有一个本地的数据源，如果缓存找不到数据了，就去本地数据源里面找。本地数据源在形式上是一个函数，调用这个函数就能完成本地取数据。
 func createGroup() *geecache.Group {
