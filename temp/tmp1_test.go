@@ -22,7 +22,7 @@ func (i *HandlerImp) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func TestMain1(t *testing.T) {
-	http.ListenAndServe(":8080", HandlerImp{})
+	http.ListenAndServe(":8080", &HandlerImp{})
 }
 
 // 第二种实现方法

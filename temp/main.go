@@ -31,26 +31,14 @@ func ForTest(mi Myinterface) {
 }
 
 func main() {
-	ForTest(&T{a: 9527})
+	var x = X{
+		Interface: Y{},
+	}
+	x.M1()
+	x.M2()
 
-	var t = T{}
-	var pt = &T{}
-	fmt.Printf("T.Get(t): %v\n", T.Get(t)) // 方法表达式
-	// T.Get(pt) // 方法表达式里面没有自动解引用。因为自动解引用是语法糖，语法糖用于新手场景，方法表达式并不是新手场景。
-	// (*T).Set(t, 1)
-	(*T).Set(pt, 1)
-
-	fmt.Println("-------------------------")
-
-	f1 := (*T).Set
-	fmt.Printf("%T", f1)
-
-	(&t).Get()
-	(&t).Set(1)
-	t.Get()
-	t.Set(1)
-}
-
-type Handler interface {
-	Handle(int) error // 签名: (int) error
+	u := User{Settings: &Settings{Theme: "dark"}}
+	fmt.Println(u.Theme) // "dark"
+	u.Theme = "light"    // 等同于: u.Settings.Theme = "light"
+	fmt.Println(u.Theme) // 通过指针完成的修改，即使有自动解引用的中间环节，最终效果也是指针修改而不是值修改。
 }
